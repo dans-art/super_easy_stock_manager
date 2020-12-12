@@ -1,0 +1,204 @@
+/*
+  Plugin: Super Easy Stock Manager
+  Author: dansart
+ */
+/* Fonts
+   ========================================================================== */
+/* Breakpoints
+   ========================================================================== */
+/* Colors
+   ========================================================================== */
+/* ==========================================================================
+   #PAGE
+   ========================================================================== */
+/**
+ * Simple page-level setup.
+ *
+ */
+html {
+  font-family: "Open Sans", sans-serif; }
+
+#sesm_history article {
+  border-width: 1px;
+  border-radius: 4px;
+  border-style: solid;
+  padding: 1.5rem; }
+  #sesm_history article .title {
+    font-weight: bold; }
+  #sesm_history article div:not(.title) {
+    margin-left: 2rem; }
+#sesm_history article.update {
+  background-color: #5fcbd4;
+  border-color: #5db2b9; }
+#sesm_history article.error {
+  background-color: #d4765f;
+  border-color: #bc5136; }
+#sesm_history article.default {
+  background-color: #5fd47c;
+  border-color: #36bc57; }
+
+/* ==========================================================================
+   #HEADINGS
+   ========================================================================== */
+/**
+ * Simple default styles for headings 1 through 6. Anything more opinionated
+ * than simple font-size changes should likely be applied via classes (see:
+ * http://csswizardry.com/2016/02/managing-typography-on-large-apps/).
+ */
+h1 {
+  text-align: center; }
+
+/* ==========================================================================
+   #IMAGES
+   ========================================================================== */
+/**
+ * 1. Fluid images for responsive purposes.
+ * 2. Offset `alt` text from surrounding copy.
+ * 3. Setting `vertical-align` removes the whitespace that appears under `img`
+ *    elements when they are dropped into a page as-is. Safer alternative to
+ *    using `display: block;`.
+ */
+/* ==========================================================================
+   #Form Elements
+   ========================================================================== */
+/**
+ */
+#sesm_input input {
+  width: 89%;
+  font-size: 1.5rem;
+  padding: 1rem;
+  margin: 1rem;
+  text-align: center; }
+
+/* ==========================================================================
+   #HEADER
+   ========================================================================== */
+/* ==========================================================================
+   #BUTTONS
+   ========================================================================== */
+/**
+ * This is an example component. Extend inuitcss by building your own components
+ * that make up your UI. Component classes are prefixed with a `c-`.
+ */
+/**
+ * 1. Allow us to style box model properties.
+ * 2. Line different sized buttons up a little nicer.
+ * 3. Make buttons inherit font styles (often necessary when styling `input`s as
+ *    buttons).
+ * 4. Reset/normalize some styles.
+ * 5. Force all button-styled elements to appear clickable.
+ */
+.c-btn {
+  display: inline-block;
+  /* [1] */
+  vertical-align: middle;
+  /* [2] */
+  font: inherit;
+  /* [3] */
+  text-align: center;
+  /* [4] */
+  margin: 0;
+  /* [4] */
+  cursor: pointer;
+  /* [5] */
+  padding: 0.5rem 1rem;
+  transition: all 300ms ease-in-out;
+  border-radius: 3px; }
+
+/* Style variants
+   ========================================================================== */
+.c-btn--primary {
+  background-color: #666; }
+  .c-btn--primary, .c-btn--primary:hover, .c-btn--primary:active, .c-btn--primary:focus {
+    text-decoration: none;
+    /* [4] */
+    color: #fff; }
+  .c-btn--primary:hover, .c-btn--primary:focus {
+    background-color: #999; }
+
+/* Size variants
+   ========================================================================== */
+.c-btn--small {
+  padding: 0.25rem 0.5rem; }
+
+.c-btn--large {
+  padding: 0.75rem 1.5rem; }
+
+#sesm_buttons {
+  display: flex;
+  justify-content: space-evenly; }
+  #sesm_buttons > span {
+    width: 8rem;
+    height: 6rem;
+    background-color: #5db2b9;
+    cursor: pointer;
+    border-width: 1px;
+    border-radius: 4px;
+    border-style: solid;
+    border-color: #5db2b9; }
+  #sesm_buttons > span:hover {
+    background-color: #5fcbd4; }
+  #sesm_buttons > span.current {
+    background-color: #5fcbd4;
+    box-shadow: 1px 1px #999; }
+  #sesm_buttons .sesm_icon,
+  #sesm_buttons .sesm_text {
+    display: block;
+    width: 100%;
+    text-align: center; }
+  #sesm_buttons .sesm_icon {
+    font-size: 2rem;
+    padding: 0.7rem 0; }
+
+/* ==========================================================================
+   #BOX-SIZING
+   ========================================================================== */
+/**
+ * More sensible default box-sizing:
+ * css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice
+ */
+/* ==========================================================================
+   #RESET
+   ========================================================================== */
+/**
+ * A very simple reset that sits on top of Normalize.css.
+ */
+/* ==========================================================================
+   #LAYOUT
+   ========================================================================== */
+/* Simple flexbox layout system */
+.o-layout {
+  display: block; }
+  @media (min-width: 768px) {
+    .o-layout {
+      display: flex; } }
+
+.o-layout__item {
+  flex: 1; }
+
+.o-layout--guttered {
+  justify-content: space-between; }
+  .o-layout--guttered > .o-layout__item {
+    flex: none; }
+
+@media (min-width: 768px) {
+  .o-layout--2 > .o-layout__item {
+    width: 49%; } }
+
+@media (min-width: 768px) {
+  .o-layout--3 > .o-layout__item {
+    width: 32%; } }
+
+@media (min-width: 768px) {
+  .o-layout--4 > .o-layout__item {
+    width: 24%; } }
+
+/*
+@import 'generic/*';
+@import 'elements/*';
+@import 'vendor/*';
+@import 'components/*';
+@import 'utilities/*';
+*/
+
+/*# sourceMappingURL=sesm-main.css.map */

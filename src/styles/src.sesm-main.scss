@@ -1,0 +1,30 @@
+/*
+  Plugin: Super Easy Stock Manager
+  Author: dansart
+ */
+
+@import 'settings/_global.scss';
+
+@import 'elements/_html.scss';
+@import 'elements/_headings.scss';
+@import 'elements/images.scss';
+@import 'elements/form.scss';
+
+@import 'components/_header.scss';
+@import 'components/btn';
+
+@import 'generic/box-sizing';
+@import 'generic/reset';
+
+@import 'tools/breakpoints';
+
+@import 'objects/layout';
+
+
+/*
+@import 'generic/*';
+@import 'elements/*';
+@import 'vendor/*';
+@import 'components/*';
+@import 'utilities/*';
+*/ 

@@ -1,0 +1,42 @@
+/* ==========================================================================
+   #PAGE
+   ========================================================================== */
+
+/**
+ * Simple page-level setup.
+ *
+ */
+
+html {
+  font-family: $font-sans-serif;
+}
+
+#sesm_history{
+
+   article{
+         border-width: 1px;
+         border-radius: 4px;
+         border-style: solid;
+         padding: 1.5rem;
+
+         & .title{
+            font-weight: bold;
+         }
+         & div:not(.title){
+            margin-left: 2rem;
+         }
+   }
+   article.update{
+      background-color: $color-light-blue;
+      border-color: $color-blue;
+   }
+   article.error{
+      background-color: $color-light-red;
+      border-color: $color-red;
+   }
+   article.default{
+      background-color: $color-light-green;
+      border-color: $color-green;
+   }
+}
+

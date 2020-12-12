@@ -1,0 +1,97 @@
+/* ==========================================================================
+   #BUTTONS
+   ========================================================================== */
+
+/**
+ * This is an example component. Extend inuitcss by building your own components
+ * that make up your UI. Component classes are prefixed with a `c-`.
+ */
+
+/**
+ * 1. Allow us to style box model properties.
+ * 2. Line different sized buttons up a little nicer.
+ * 3. Make buttons inherit font styles (often necessary when styling `input`s as
+ *    buttons).
+ * 4. Reset/normalize some styles.
+ * 5. Force all button-styled elements to appear clickable.
+ */
+
+.c-btn {
+  display: inline-block; /* [1] */
+  vertical-align: middle; /* [2] */
+  font: inherit; /* [3] */
+  text-align: center; /* [4] */
+  margin: 0; /* [4] */
+  cursor: pointer; /* [5] */
+  padding: 0.5rem 1rem;
+  transition: $global-transition;
+  border-radius: $global-radius;
+}
+
+/* Style variants
+   ========================================================================== */
+
+.c-btn--primary {
+  background-color: $color-link;
+
+  &,
+  &:hover,
+  &:active,
+  &:focus {
+    text-decoration: none; /* [4] */
+    color: $color-white;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: $color-hover;
+  }
+}
+
+/* Size variants
+   ========================================================================== */
+
+.c-btn--small {
+  padding: 0.25rem 0.5rem;
+}
+
+.c-btn--large {
+  padding: 0.75rem 1.5rem;
+}
+
+#sesm_buttons{
+  display:flex;
+  justify-content:space-evenly;
+ 
+  & > span{
+    width: 8rem;
+    height: 6rem;
+    background-color: $color-blue;
+    cursor: pointer;
+    border-width: 1px;
+    border-radius: 4px;
+    border-style: solid;
+    border-color: $color-blue;
+  }
+
+  & > span:hover{
+    background-color: $color-light-blue;
+  }
+
+  & > span.current{
+    background-color: $color-light-blue;
+    box-shadow: 1px 1px $color-light-grey;
+  }
+
+  .sesm_icon,
+  .sesm_text{
+    display:block;
+    width:100%;
+    text-align: center;
+  }
+  .sesm_icon{
+    font-size: 2rem;
+    padding: 0.7rem 0;
+  }
+
+}
