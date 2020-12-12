@@ -96,7 +96,7 @@ class Super_Easy_Stock_Manager_Ajax
         if (empty($sku) or $product_id === 0) {
             $result['template'] = 'error';
             $result['sku'] = $sku;
-            $result['error'] = __('Product not found', 'sesm');
+            $result['error'] = sprintf(__('Product not found for SKU: %s', 'sesm'),$sku);
             return $result;
         } else {
             return wc_get_product($product_id);

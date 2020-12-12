@@ -46,7 +46,6 @@ function sesmAjax() {
 
 function addToHistory(dataObj){
     var template = historyTemplate[dataObj.template];
-    console.log(template);
     $.each(dataObj, function(index, value) {
         template = template.replace('${'+index+'}',value);
     });

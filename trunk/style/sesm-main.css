@@ -22,7 +22,8 @@ html {
   border-width: 1px;
   border-radius: 4px;
   border-style: solid;
-  padding: 1.5rem; }
+  padding: 1.5rem;
+  margin: 1rem; }
   #sesm_history article .title {
     font-weight: bold; }
   #sesm_history article div:not(.title) {

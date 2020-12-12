@@ -29,5 +29,5 @@ add_action('wp_loaded', 'sesmRun');
 function sesmRun()
 {
     $sesm = new Super_Easy_Stock_Manager();
-    $sesm->sesm_admin_init();
+    //$sesm->sesm_admin_init();
 }
