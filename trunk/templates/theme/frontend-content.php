@@ -18,12 +18,19 @@
 </section>
 <section id="sesm_input">
     <div class="sesm_options">
-    <input class="sesm_input add_quantities remove_quantities" style="display: none;" type="text" placeholder="Anzahl" />
-    <input class="sesm_input update_price" style="display: none;" type="text" placeholder="Preis"/>
-    <input class="sesm_input update_price sale" style="display: none;" type="text" placeholder="Angebots-Preis"/>
+    <label for="sesm_quant" class="sesm_label add_quantities remove_quantities"  style="display: none;"><?php echo __("Quantity", "sesm");?></label>
+    <input id="sesm_quant" class="sesm_input add_quantities remove_quantities" style="display: none;" type="text" value="1" />
+
+    <label for="sesm_price_reg" class="sesm_label update_price"  style="display: none;"><?php echo __("Price Regular", "sesm");?></label>
+    <input id="sesm_price_reg" class="sesm_input update_price" style="display: none;" type="text" />
+
+    <label for="sesm_price_sale" class="sesm_label update_price"  style="display: none;"><?php echo __("Price Sale", "sesm");?></label>
+    <input id="sesm_price_sale" class="sesm_input update_price sale" style="display: none;" type="text"/>
+
     </div>
     <div>
-        <input id="sesm_sku_input" style="display: none;" type="text" placeholder="SKU" value="36103" />
+        <label for="sesm_sku_input" style="display: none;"><?php echo __("SKU", "sesm");?></label>
+        <input id="sesm_sku_input" style="display: none;" type="text" />
     </div>
 </section>
 <section id="sesm_history">

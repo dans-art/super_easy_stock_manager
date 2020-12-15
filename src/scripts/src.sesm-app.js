@@ -9,23 +9,38 @@ import * as tools from './modules/tools.js';
 
 var sesm_do = '';
 
-$(document).on('keypress',function(e) {
+/**
+ * Runs the Ajax function as soon as "Enter" has been pressed.
+ */
+$(document).on('keyup',function(e) {
     if(e.which == 13) {
         sesmAjax();
         $('#sesm_sku_input').val('');
     }
 });
 
-
+/**
+ * Changes the visability of the input fields. Runs on Button click
+ */
 $('#sesm_buttons span').click(function () {
     sesm_do = $(this).data('do');
     $('#sesm_input input').hide();
+    $('#sesm_input label').hide();
+
     $('#sesm_sku_input').show();
+    $('#sesm_sku_input').prev().show();
+    $('#sesm_sku_input').focus();
+
     $('.sesm_input.'+sesm_do).show();
+    $('.sesm_label.'+sesm_do).show();
+
     $('#sesm_buttons span.current').removeClass('current');
     $(this).addClass('current');
 });
 
+/**
+ * Sends the Ajax request and delivers the result to the addToHistory function
+ */
 function sesmAjax() {
     var sku_input = $('#sesm_sku_input').val();
     var quantity_input = $('.sesm_input.add_quantities').val();
@@ -44,6 +59,10 @@ function sesmAjax() {
     });
 }
 
+/**
+ * Adds the response from sesmAjax function to the history section
+ * @param {object} dataObj - Contains the result from the ajax request
+ */
 function addToHistory(dataObj){
     var template = historyTemplate[dataObj.template];
     $.each(dataObj, function(index, value) {
@@ -51,3 +70,4 @@ function addToHistory(dataObj){
     });
     $('#sesm_history').prepend(template);
 }
+
