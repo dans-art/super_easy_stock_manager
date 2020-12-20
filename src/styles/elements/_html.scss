@@ -9,35 +9,57 @@
 
 html {
   font-family: $font-sans-serif;
+  background-color: $color-medium-grey;
 }
 
-#sesm_history{
+body{
+   margin: $sesm-margin;
+}
+
+#sesm_history.active{
+
+   background-color: $color-white;
+   padding: 1.5rem;
 
    article{
-         border-width: 1px;
-         border-radius: 4px;
-         border-style: solid;
+         border: $sesm-border;
+         border-radius: $sesm-border-radius;
          padding: 1.5rem;
-         margin: 1rem;
+         margin-bottom: 1.5rem;
+         display: flex;
          
          & .title{
             font-weight: bold;
          }
-         & div:not(.title){
-            margin-left: 2rem;
+
+         & .icon{
+            border: $sesm-border;
+            border-radius: $sesm-border-radius;
+            width: 2rem;
+            height: 2rem;
+            margin-right: 1rem;
+            text-align: center;
+         }
+         & .icon i{
+               padding-top: 0.5rem;
+         }
+
+         .history_flex{
+            display: flex;
+            
+            div:first-child{
+               width: 10rem;
+            }
          }
    }
    article.update{
-      background-color: $color-light-blue;
-      border-color: $color-blue;
+
    }
    article.error{
-      background-color: $color-light-red;
-      border-color: $color-red;
+
    }
    article.default{
-      background-color: $color-light-green;
-      border-color: $color-green;
+
    }
 }
 

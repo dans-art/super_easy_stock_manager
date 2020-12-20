@@ -9,6 +9,17 @@
   
 }
 
+.quant_flex_group,
+.price_flex_group{
+  display: flex;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.price_flex_group div{
+  margin: 0 1rem;
+}
+
 .o-layout {
   display: block;
 

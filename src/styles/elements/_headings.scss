@@ -10,6 +10,11 @@
 
 h1 {
  text-align: center;
+ width: 100%;
+ border: $sesm-border;
+ background-color: $color-white;
+ font-weight: normal;
+ padding: 1.5rem 0;
 }
 
 h2 {

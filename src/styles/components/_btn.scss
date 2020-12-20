@@ -61,37 +61,57 @@
 
 #sesm_buttons{
   display:flex;
-  justify-content:space-evenly;
+  justify-content: center;
  
   & > span{
-    width: 8rem;
+    width: 6rem;
     height: 6rem;
-    background-color: $color-blue;
+    background-color: $color-light-grey;
+    color: $color-white;
     cursor: pointer;
-    border-width: 1px;
-    border-radius: 4px;
-    border-style: solid;
-    border-color: $color-blue;
+    border: $sesm-border;
+    border-radius: $sesm-border-radius;
+    margin: 1rem;
   }
 
   & > span:hover{
-    background-color: $color-light-blue;
+    background-color: $color-white;
+    color: $color-medium-grey;
   }
 
   & > span.current{
-    background-color: $color-light-blue;
-    box-shadow: 1px 1px $color-light-grey;
+    background-color: $color-white;
+    color: $color-medium-grey;
   }
 
-  .sesm_icon,
-  .sesm_text{
+  .sesm_icon{
+    font-size: 3rem;
+    padding: 1.3rem 0;
     display:block;
     width:100%;
     text-align: center;
   }
-  .sesm_icon{
-    font-size: 2rem;
-    padding: 0.7rem 0;
-  }
 
+ .current .sesm_icon_line{
+  display: block;
+  background-color: $color-white;
+  width: 1rem;
+  height: 1.6rem;
+  left: 2.5rem;
+  position: relative;
+ }
+}
+
+.options_button {
+  width: 5rem;
+  height: 4rem;
+  margin: 0 1rem;
+  color: $color-white;
+  cursor: pointer;
+  border-radius: $sesm-border-radius;
+
+  i{
+    font-size: 1.5rem;
+    color: $color-medium-grey;
+  }
 }

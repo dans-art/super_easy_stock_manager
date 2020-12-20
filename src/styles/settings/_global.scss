@@ -37,8 +37,8 @@ $color-red: #bc5136;
 $color-light-red: #d4765f;
 $color-black: #000;
 $color-very-light-grey: #ccc;
-$color-light-grey: #999;
-$color-medium-grey: #666;
+$color-light-grey: #C8C8C8;
+$color-medium-grey: #5A5A5A;
 $color-dark-grey: #333;
 
 // Text
@@ -51,6 +51,11 @@ $color-hover: $color-light-grey;
 
 // Borders
 $color-border: $color-yellow-white;
+$sesm-border: 1px solid #707070;
+$sesm-border-radius: 5px;
 
 // Fills
 $color-fill: $color-very-light-grey;
+
+//Margins
+$sesm-margin: 1rem;
