@@ -22,6 +22,13 @@ label{
     font-size: 1.5rem;
 }
 
-.input_loading{
-    border-bottom: 5px $color-light-green solid;
+.input_loading.active{
+    width: 50%;
+    height: 0.5rem;
+    background-color: $color-light-green;
+    animation-name: loading_bar;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    position: relative;
+    top: -0.5rem;
 }

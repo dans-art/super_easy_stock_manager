@@ -20,24 +20,13 @@ class Super_Easy_Stock_Manager_Helper
 
     /**
      * Loads the translation of the plugin.
-     * Located at: plugins/add-customer-for-woocommerce/languages/
+     * Located at: plugins/super-easy-stock-manager/languages/
      *
      * @return void
      */
     public function sesm_load_textdomain()
     {
-        //load_textdomain('wac', $this->wac_get_home_path() . 'wp-content/plugins/add-customer-for-woocommerce/languages/wac-' . determine_locale() . '.mo');
-    }
-
-    /**
-     * Enqueue the styles of the plugin
-     * Located at: plugins/add-customer-for-woocommerce/style/admin-style.css
-     *
-     * @return void
-     */
-    public function wac_enqueue_admin_style()
-    {
-        wp_enqueue_style('wac-admin', WP_PLUGIN_URL . '/super-easy-stock-manager/style/sesm-admin.css');
+        load_textdomain('sesm', WP_PLUGIN_DIR . '/super-easy-stock-manager/languages/sesm-' . determine_locale() . '.mo');
     }
 
     /**
@@ -64,7 +53,7 @@ class Super_Easy_Stock_Manager_Helper
      */
     public function getTemplate($name, $path = 'templates/theme/')
     {
-        return WP_PLUGIN_DIR.'/super-easy-stock-manager/templates/theme/' . $name . '.php';
+        return WP_PLUGIN_DIR . '/super-easy-stock-manager/templates/theme/' . $name . '.php';
     }
     /**
      * Loads the Javascript and css into the head of the page
@@ -91,7 +80,21 @@ class Super_Easy_Stock_Manager_Helper
         $this->scriptsLoaded = true;
         return;
     }
+    /**
+     * Adds the Actions to WP to load Textdomain and register ajax
+     *
+     * @return void
+     */
+    public function addActions()
+    {
+        //load language 
+        add_action('init', [$this, 'sesm_load_textdomain']);
+        add_action('wp_loaded', [$this, 'enqueueScripts']);
 
+        //register Ajax
+        add_action('wp_ajax_sesm-ajax', [$this, 'sesmAjax']);
+        add_action('wp_ajax_nopriv_sesm-ajax', [$this, 'sesmAjax']);
+    }
 }
 
 //Include a better debugger

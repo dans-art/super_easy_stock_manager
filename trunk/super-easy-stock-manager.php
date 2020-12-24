@@ -21,13 +21,18 @@ require_once('include/classes/sesm-ajax.php');
 require_once('include/classes/sesm-admin.php');
 
 
-add_action('wp_loaded', 'sesmRun');
+$sesm = new Super_Easy_Stock_Manager();
+
+//add_action('wp_loaded', 'sesmRun');
 
 /**
  * Runs the Plugin
  */
+/*
 function sesmRun()
 {
-    $sesm = new Super_Easy_Stock_Manager();
+    global $sesm;
+    $sesm -> run();
     //$sesm->sesm_admin_init();
 }
+*/

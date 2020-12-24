@@ -20,14 +20,17 @@ class Super_Easy_Stock_Manager_Ajax
     {
         $product = $this->loadProduct($sku);
         $result = array('template' => 'get', 'sku' => $sku);
+        $type = $product->get_type();
         if (is_object($product)) {
-            $result['post_type'] = $product->get_type();
+            $result['post_type'] = $this->getProductType($type);
             $result['title'] = $product->get_name();
-            $result['stock_quantity'] = $product->get_stock_quantity();
-            $result['price'] = $product->get_price();
-            $result['regular_price'] = $product->get_regular_price();
-            $result['sale_price'] = $product->get_sale_price();
+            $result['stock_quantity'] = $product->get_stock_quantity() ?: "-";
+            $result['price'] = $product->get_price() ?: "-";
+            $result['currency'] = get_woocommerce_currency();
+            $result['regular_price'] = $product->get_regular_price() ?: "-";
+            $result['sale_price'] = $product->get_sale_price() ?: "-";
             $result['description'] = substr($product->get_short_description(), 0, 50);
+            $result['image'] = $product->get_image('thumbnail');
             return json_encode($result);
         }
         return json_encode($product);
@@ -45,35 +48,73 @@ class Super_Easy_Stock_Manager_Ajax
         $result = array('template' => 'update', 'sku' => $sku);
         if (empty($value)) {
             $result['template'] = 'error';
-            $result['error'] = __('No Value Set!', 'sesm');
+            $result['error'] = __('No value set!', 'sesm');
             return json_encode($result);
         }
         $product = $this->loadProduct($sku);
         if (is_object($product)) {
+            if($product->get_type() === 'variable'){
+                $result['template'] = 'error';
+                $result['error'] = __('You can\'t change the values of that product, because it has variations. Please change the value of the variation itself.', 'sesm');
+                return json_encode($result); 
+            }
+
             $result['title'] = $product->get_title();
             switch ($action) {
                 case 'price':
+                    $regular_price = isset($_REQUEST['price']) ? $_REQUEST['price'] : '';
                     $sale_price = isset($_REQUEST['price_sale']) ? $_REQUEST['price_sale'] : '';
-                    settype($sale_price, 'float');
-                    $result['old_value'] = $product->get_regular_price() . '(' . $product->get_sale_price() . ')';
-                    $result['new_value'] = $value . '(' . $sale_price . ')'; 
-                    $result['name_value'] = __('Price','sesm');
-                    $product->set_regular_price($value);
-                    $product->set_sale_price($sale_price);
+                    $type = $product->get_type();
+                    if(!empty($regular_price)) {
+                        settype($regular_price, 'float');
+                    }
+                    if(!empty($sale_price)) {
+                        settype($sale_price, 'float');
+                    }
+                    if (($regular_price > 0 and $sale_price > 0) and ($sale_price > $regular_price)) {
+                        $result['template'] = 'error';
+                        $result['error'] = __('Sale price has to be smaller than the regular price!', 'sesm');
+                        return json_encode($result);
+                    }
+                    $result['template'] = 'updatePrice';
+                    $result['post_type'] = $this->getProductType($type);
+                    $result['old_regular'] = $product->get_regular_price() ?: "-";
+                    $result['old_sale'] = $product->get_sale_price() ?: "-";
+                    $result['new_regular'] = $regular_price;
+                    $result['new_sale'] = $sale_price;
+                    $result['currency'] = get_woocommerce_currency();
+                    if(!empty($regular_price)) {
+                        $product->set_regular_price($regular_price);
+                        $result['css_regular'] = '';
+                    }else{
+                        $result['css_regular'] = 'hide';
+                    }
+                    if(!empty($sale_price)) {
+                        $product->set_sale_price($sale_price);
+                        $result['css_sale'] = '';
+                    }else{
+                        $result['css_sale'] = 'hide';
+                    }
                     break;
-                case 'increase':
-                case 'decrease':
+                case 'stock':
+                    $result['manage_stock'] = $product->get_manage_stock();
                     $old_val = $product->get_stock_quantity();
-                    if ($old_val === null) {
+                    $manage_stock = $product->get_manage_stock();
+                    if ($manage_stock !== true ) {
                         $product->set_manage_stock(true);
                         $old_val = 0;
                     }
-
-                    $new_val = ($action === 'increase') ? $old_val + $value : $old_val - $value;
+                    $increase = ($value > 0)?true:false;
+                    $value_positive = abs($value);
+                    $new_val = ($increase) ? $old_val + $value_positive : $old_val - $value_positive;
+                    if($increase){
+                        $result['change_txt'] = sprintf(__('The stock has been increased by %d to %d', 'sesm'), $value_positive, $new_val);
+                        $result['direction'] = 'increase';
+                    }else{
+                        $result['change_txt'] = sprintf(__('The stock has been decreased by %d to %d', 'sesm'), $value_positive, $new_val);
+                        $result['direction'] = 'decrease';
+                    }
                     $product->set_stock_quantity($new_val);
-                    $result['old_value'] = $old_val;
-                    $result['new_value'] = $new_val;
-                    $result['name_value'] = __('Stock','sesm');
                     //echo $ajax->updateProduct('increase', $sku, $value);
                     break;
             }
@@ -96,10 +137,36 @@ class Super_Easy_Stock_Manager_Ajax
         if (empty($sku) or $product_id === 0) {
             $result['template'] = 'error';
             $result['sku'] = $sku;
-            $result['error'] = sprintf(__('Product not found for SKU: %s', 'sesm'),$sku);
+            $result['error'] = sprintf(__('Product not found for SKU: %s', 'sesm'), $sku);
             return $result;
         } else {
             return wc_get_product($product_id);
+        }
+    }
+
+    /**
+     * Returns the Product type for humans to understand and translates it.
+     *
+     * @param  string $type - Product Type
+     * @return void
+     */
+    public function getProductType($type){
+        switch ($type) {
+            case 'simple':
+                   return __('Simple Product', 'sesm'); 
+                break;
+            
+            case 'variable':
+                return __('Product with Variations', 'sesm'); 
+                break;
+            
+            case 'variation':
+                return __('Variation of Product', 'sesm'); 
+                break;
+            
+            default:
+            return $type; 
+                break;
         }
     }
 }

@@ -9,11 +9,20 @@
   
 }
 
+section {
+  &#sesm_input {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+}
+
+
 .quant_flex_group,
 .price_flex_group{
   display: flex;
-  width: 50%;
+  width: 100%;
   margin: 0 auto;
+  justify-content: center;
 }
 
 .price_flex_group div{

@@ -20,11 +20,13 @@ html {
   background-color: #5A5A5A; }
 
 body {
-  margin: 1rem; }
+  margin: 3rem 1rem 0.5rem 1rem; }
 
 #sesm_history.active {
   background-color: #fff;
-  padding: 1.5rem; }
+  padding: 1.5rem;
+  max-width: 800px;
+  margin: 0 auto; }
   #sesm_history.active article {
     border: 1px solid #707070;
     border-radius: 5px;
@@ -46,6 +48,8 @@ body {
       display: flex; }
       #sesm_history.active article .history_flex div:first-child {
         width: 10rem; }
+    #sesm_history.active article .hide {
+      display: none; }
 
 /* ==========================================================================
    #HEADINGS
@@ -73,6 +77,18 @@ h1 {
  *    elements when they are dropped into a page as-is. Safer alternative to
  *    using `display: block;`.
  */
+#sesm_history .image {
+  height: 5rem;
+  border: 1px solid #707070;
+  border-radius: 5px;
+  width: 5rem;
+  margin-left: auto; }
+#sesm_history img.attachment-thumbnail.size-thumbnail,
+#sesm_history img.woocommerce-placeholder.wp-post-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px; }
+
 /* ==========================================================================
    #HEADER
    ========================================================================== */

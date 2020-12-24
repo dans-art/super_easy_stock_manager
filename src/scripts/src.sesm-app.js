@@ -29,7 +29,7 @@ $('#sesm_buttons span').click(function () {
     $('#sesm_input .quant_flex_group').hide();
 
     $('#sesm_sku_input').show();
-    $('#sesm_sku_input').next().show();
+    $('[for=sesm_sku_input]').show();
     $('#sesm_sku_input').focus();
 
     $('.sesm_input.'+sesm_do).show();
@@ -64,7 +64,7 @@ function sesmAjax() {
     var quantity_input = $('#sesm_quant').val();
     var price_input = $('.sesm_input.update_price').val();
     var price_sale_input = $('.sesm_input.update_price.sale').val();
-    $('#sesm_sku_input').addClass('input_loading');
+    $('#sesm_sku_input_loader').addClass('active');
     var data = {
         action: 'sesm-ajax',
         do: sesm_do,
@@ -75,7 +75,7 @@ function sesmAjax() {
     };
     $.post(wp_site_url + '/wp-admin/admin-ajax.php', data, function (response) {
         addToHistory($.parseJSON(response));
-        $('#sesm_sku_input').removeClass('input_loading');
+        $('#sesm_sku_input_loader').removeClass('active');
     });
 }
 
@@ -87,7 +87,7 @@ function addToHistory(dataObj){
     var template = historyTemplate[dataObj.template];
     $.each(dataObj, function(index, value) {
         value = colorValues(index, value);
-        template = template.replace('${'+index+'}',value);
+        template = template.replaceAll('${'+index+'}',value);
     });
     $('#sesm_history').addClass('active');
     $('#sesm_history').prepend(template);

@@ -20,11 +20,13 @@ html {
   background-color: #5A5A5A; }
 
 body {
-  margin: 1rem; }
+  margin: 3rem 1rem 0.5rem 1rem; }
 
 #sesm_history.active {
   background-color: #fff;
-  padding: 1.5rem; }
+  padding: 1.5rem;
+  max-width: 800px;
+  margin: 0 auto; }
   #sesm_history.active article {
     border: 1px solid #707070;
     border-radius: 5px;
@@ -46,6 +48,8 @@ body {
       display: flex; }
       #sesm_history.active article .history_flex div:first-child {
         width: 10rem; }
+    #sesm_history.active article .hide {
+      display: none; }
 
 /* ==========================================================================
    #HEADINGS
@@ -73,6 +77,18 @@ h1 {
  *    elements when they are dropped into a page as-is. Safer alternative to
  *    using `display: block;`.
  */
+#sesm_history .image {
+  height: 5rem;
+  border: 1px solid #707070;
+  border-radius: 5px;
+  width: 5rem;
+  margin-left: auto; }
+#sesm_history img.attachment-thumbnail.size-thumbnail,
+#sesm_history img.woocommerce-placeholder.wp-post-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px; }
+
 /* ==========================================================================
    #Form Elements
    ========================================================================== */
@@ -92,8 +108,15 @@ label {
   padding: 1rem;
   font-size: 1.5rem; }
 
-.input_loading {
-  border-bottom: 5px #5fd47c solid; }
+.input_loading.active {
+  width: 50%;
+  height: 0.5rem;
+  background-color: #5fd47c;
+  animation-name: loading_bar;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  position: relative;
+  top: -0.5rem; }
 
 /* ==========================================================================
    #HEADER
@@ -206,14 +229,39 @@ label {
  * A very simple reset that sits on top of Normalize.css.
  */
 /* ==========================================================================
+   #Animations
+   ========================================================================== */
+/**
+ */
+@keyframes loading_bar {
+  0% {
+    width: 0%;
+    margin-left: 0%; }
+  50% {
+    width: 100%;
+    margin-left: 0%; }
+  100% {
+    width: 0%;
+    margin-left: 100%; } }
+@media only screen and (max-width: 660px) {
+  #sesm_history article {
+    flex-wrap: wrap; }
+    #sesm_history article .image {
+      margin: auto; } }
+/* ==========================================================================
    #LAYOUT
    ========================================================================== */
 /* Simple flexbox layout system */
+section#sesm_input {
+  max-width: 800px;
+  margin: 0 auto; }
+
 .quant_flex_group,
 .price_flex_group {
   display: flex;
-  width: 50%;
-  margin: 0 auto; }
+  width: 100%;
+  margin: 0 auto;
+  justify-content: center; }
 
 .price_flex_group div {
   margin: 0 1rem; }

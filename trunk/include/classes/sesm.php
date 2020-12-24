@@ -17,10 +17,7 @@ class Super_Easy_Stock_Manager extends Super_Easy_Stock_Manager_Helper
      */
     public function __construct()
     {
-        //register Ajax
-        add_action('wp_ajax_sesm-ajax', [$this, 'sesmAjax']);
-        add_action('wp_ajax_nopriv_sesm-ajax', [$this, 'sesmAjax']);
-        $this->enqueueScripts();
+        $this->addActions();
     }
     /**
      * Loads the Frontend Template
@@ -46,6 +43,7 @@ class Super_Easy_Stock_Manager extends Super_Easy_Stock_Manager_Helper
         $sku = htmlspecialchars($sku);
         $quantity = isset($_REQUEST['quantity'])?$_REQUEST['quantity']:'';
         $price = isset($_REQUEST['price'])?$_REQUEST['price']:'';
+        $priceSale = isset($_REQUEST['price_sale'])?$_REQUEST['price_sale']:'';
         settype($quantity, 'float');
         settype($price, 'float');
         switch ($do) {
@@ -53,13 +51,10 @@ class Super_Easy_Stock_Manager extends Super_Easy_Stock_Manager_Helper
                 echo $ajax->getProduct($sku);
                 break;
             case 'add_quantities':
-                echo $ajax->updateProduct('increase', $sku, $quantity);
-                break;
-            case 'remove_quantities':
-                echo $ajax->updateProduct('decrease', $sku, $quantity);
+                echo $ajax->updateProduct('stock', $sku, $quantity);
                 break;
             case 'update_price':
-                echo $ajax->updateProduct('price', $sku, $price);
+                echo $ajax->updateProduct('price', $sku, $price.$priceSale);
                 break;
         }
         exit();

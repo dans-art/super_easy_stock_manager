@@ -15,6 +15,7 @@
 <section id="sesm_input">
 <div>
         <input id="sesm_sku_input" style="display: none;" type="text" />
+        <div id="sesm_sku_input_loader" class="input_loading"></div>
         <label for="sesm_sku_input" style="display: none;"><?php echo __("SKU", "sesm");?></label>
     </div>
     <div class="sesm_options">
@@ -27,16 +28,16 @@
                 <i class="fas fa-plus"></i>
             </button>
         </div>
-    <label for="sesm_quant" class="sesm_label add_quantities"  style="display: none;"><?php echo __("Add Quantity", "sesm");?></label>
+    <label for="sesm_quant" class="sesm_label add_quantities"  style="display: none;"><?php echo __("Add quantity", "sesm");?></label>
 
     <div class="price_flex_group">
     <div>
         <input id="sesm_price_reg" class="sesm_input update_price" style="display: none;" type="text" />
-        <label for="sesm_price_reg" class="sesm_label update_price"  style="display: none;"><?php echo __("Price Regular", "sesm");?></label>
+        <label for="sesm_price_reg" class="sesm_label update_price"  style="display: none;"><?php echo __("Price regular", "sesm");?></label>
     </div>
     <div>
         <input id="sesm_price_sale" class="sesm_input update_price sale" style="display: none;" type="text"/>
-        <label for="sesm_price_sale" class="sesm_label update_price"  style="display: none;"><?php echo __("Price Sale", "sesm");?></label>    
+        <label for="sesm_price_sale" class="sesm_label update_price"  style="display: none;"><?php echo __("Price sale", "sesm");?></label>    
     </div>
     </div>
 

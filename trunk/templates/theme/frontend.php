@@ -1,7 +1,5 @@
 <?php
 /* Disable WordPress Admin Bar for all users */
-add_filter('show_admin_bar', '__return_false');
-
 ?>
 
 <html>
@@ -11,7 +9,7 @@ add_filter('show_admin_bar', '__return_false');
 </head>
 
 <body>
-    <h1>Super Easy Stock Manager</h1>
+    <h1><?php echo __('Super Easy Stock Manager', 'sesm');?></h1>
     <?php require 'frontend-content.php';?>
 </body>
 

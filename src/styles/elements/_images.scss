@@ -14,3 +14,18 @@ img {
 
 }
 
+#sesm_history{
+   .image{
+      height: 5rem;
+      border: $sesm-border;
+      border-radius: $sesm-border-radius;
+      width: 5rem;
+      margin-left: auto;
+   }
+   img.attachment-thumbnail.size-thumbnail,
+   img.woocommerce-placeholder.wp-post-image {
+      width: 100%;
+      height: 100%;
+      border-radius: $sesm-border-radius;
+  }
+}
