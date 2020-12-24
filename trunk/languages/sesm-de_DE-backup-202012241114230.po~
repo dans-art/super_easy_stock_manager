@@ -86,7 +86,7 @@ msgstr "Artikelnummer"
 
 #. Description of the plugin
 msgid "Stock Management with ease!"
-msgstr "Sehr einfache Lagerverwaltung!"
+msgstr ""
 
 #. Name of the plugin
 #: templates/theme/frontend-head.php:1 templates/theme/frontend.php:12

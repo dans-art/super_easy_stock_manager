@@ -34,7 +34,10 @@ body {
     margin-bottom: 1.5rem;
     display: flex; }
     #sesm_history.active article .title {
-      font-weight: bold; }
+      font-weight: bold;
+      margin-bottom: 0.5rem; }
+      #sesm_history.active article .title span {
+        font-weight: normal; }
     #sesm_history.active article .icon {
       border: 1px solid #707070;
       border-radius: 5px;
@@ -50,6 +53,14 @@ body {
         width: 10rem; }
     #sesm_history.active article .hide {
       display: none; }
+  #sesm_history.active article.update .change:before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 400;
+    margin-right: 0.5rem; }
+  #sesm_history.active article.update .change.increase:before {
+    content: "\f0fe"; }
+  #sesm_history.active article.update .change.decrease:before {
+    content: '\f146'; }
 
 /* ==========================================================================
    #HEADINGS

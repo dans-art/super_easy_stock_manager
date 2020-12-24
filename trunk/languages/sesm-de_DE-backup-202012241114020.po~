@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Super Easy Stock Manager!\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-10-31 20:56+0000\n"
-"PO-Revision-Date: 2020-12-24 11:14+0000\n"
+"PO-Revision-Date: 2020-12-24 09:59+0000\n"
 "Last-Translator: Daniel Spycher\n"
 "Language-Team: Deutsch\n"
 "Language: de_DE\n"
@@ -39,13 +39,9 @@ msgstr "http://dev.dans-art.ch"
 msgid "Logout"
 msgstr "Abmelden"
 
-#: include/classes/sesm-ajax.php:249
+#: include/classes/sesm-ajax.php:51
 msgid "No value set!"
 msgstr "Keinen Wert gesetzt!"
-
-#: include/classes/sesm-ajax.php:180
-msgid "Old and new prices are the same, nothing has been changed"
-msgstr "Alter und neuer Preis haben sich nicht geändert."
 
 #: templates/theme/frontend-content.php:36
 #: templates/theme/frontend-history-item-update-price.php:7
@@ -59,12 +55,12 @@ msgstr "Regulärer Preis"
 msgid "Price sale"
 msgstr "Angebots Preis"
 
-#: include/classes/sesm-ajax.php:203
+#: include/classes/sesm-ajax.php:140
 #, php-format
 msgid "Product not found for SKU: %s"
 msgstr "Kein Produkt für die Artikelnummer \"%s\" gefunden"
 
-#: include/classes/sesm-ajax.php:225
+#: include/classes/sesm-ajax.php:160
 msgid "Product with Variations"
 msgstr "Produkt mit Varianten"
 
@@ -72,11 +68,11 @@ msgstr "Produkt mit Varianten"
 msgid "Quantity"
 msgstr "Anzahl"
 
-#: include/classes/sesm-ajax.php:153
+#: include/classes/sesm-ajax.php:76
 msgid "Sale price has to be smaller than the regular price!"
 msgstr "Der Angebotspreis muss kleiner sein, als der normale Preis"
 
-#: include/classes/sesm-ajax.php:221
+#: include/classes/sesm-ajax.php:156
 msgid "Simple Product"
 msgstr "Einfaches Produkt"
 
@@ -86,24 +82,24 @@ msgstr "Artikelnummer"
 
 #. Description of the plugin
 msgid "Stock Management with ease!"
-msgstr "Sehr einfache Lagerverwaltung!"
+msgstr ""
 
 #. Name of the plugin
 #: templates/theme/frontend-head.php:1 templates/theme/frontend.php:12
 msgid "Super Easy Stock Manager"
 msgstr "Super einfache Lagerverwaltung"
 
-#: include/classes/sesm-ajax.php:112
+#: include/classes/sesm-ajax.php:114
 #, php-format
 msgid "The stock has been decreased by %d to %d"
 msgstr "Der Lagerbestand wurde um %d reduziert auf insgesamt %d Stück."
 
-#: include/classes/sesm-ajax.php:109
+#: include/classes/sesm-ajax.php:111
 #, php-format
 msgid "The stock has been increased by %d to %d"
 msgstr "Der Lagerbestand wurde um %d erhöht auf insgesamt %d Stück."
 
-#: include/classes/sesm-ajax.php:229
+#: include/classes/sesm-ajax.php:164
 msgid "Variation of Product"
 msgstr "Variante eines Produkts"
 
@@ -111,7 +107,7 @@ msgstr "Variante eines Produkts"
 msgid "You are not allowed to edit products!"
 msgstr "Du bist nicht berechtigt, Produkte zu bearbeiten!"
 
-#: include/classes/sesm-ajax.php:53
+#: include/classes/sesm-ajax.php:58
 msgid ""
 "You can't change the values of that product, because it has variations. "
 "Please change the value of the variation itself."

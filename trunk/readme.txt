@@ -18,3 +18,8 @@ A Stock Manager that is built for speed!
 No unneccesary suff, just the basics and super fast!
 
 If you like the Plugin, please leave some Stars or spend me a coffee. Thanks!
+
+Usage:
+1. Install the Plugin
+2. Go to https://your-site.com/sesm
+3. Enjoy

@@ -37,24 +37,23 @@ class Super_Easy_Stock_Manager extends Super_Easy_Stock_Manager_Helper
      */
     public function sesmAjax()
     {
+        if (!current_user_can('edit_products')) {
+            echo json_encode(array('template' => 'error', 'error' => __('You are not allowed to edit products!', 'sesm')));
+            exit();
+        }
         $ajax = new Super_Easy_Stock_Manager_Ajax();
-        $do =  isset($_REQUEST['do'])?$_REQUEST['do']:'get_product';
-        $sku = isset($_REQUEST['sku'])?$_REQUEST['sku']:'';
+        $do =  isset($_REQUEST['do']) ? $_REQUEST['do'] : 'get_product';
+        $sku = isset($_REQUEST['sku']) ? $_REQUEST['sku'] : '';
         $sku = htmlspecialchars($sku);
-        $quantity = isset($_REQUEST['quantity'])?$_REQUEST['quantity']:'';
-        $price = isset($_REQUEST['price'])?$_REQUEST['price']:'';
-        $priceSale = isset($_REQUEST['price_sale'])?$_REQUEST['price_sale']:'';
-        settype($quantity, 'float');
-        settype($price, 'float');
         switch ($do) {
             case 'get_product':
                 echo $ajax->getProduct($sku);
                 break;
             case 'add_quantities':
-                echo $ajax->updateProduct('stock', $sku, $quantity);
+                echo $ajax->updateProduct('stock', $sku);
                 break;
             case 'update_price':
-                echo $ajax->updateProduct('price', $sku, $price.$priceSale);
+                echo $ajax->updateProduct('price', $sku);
                 break;
         }
         exit();
