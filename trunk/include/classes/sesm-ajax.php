@@ -196,15 +196,43 @@ class Super_Easy_Stock_Manager_Ajax
     public function loadProduct($sku)
     {
         $result = array();
-        $product_id = wc_get_product_id_by_sku($sku);
-        if (empty($sku) or $product_id === 0) {
+        $sku = (integer) $sku;
+        if (empty($sku)) {
             $result['template'] = 'error';
             $result['sku'] = $sku;
-            $result['error'] = sprintf(__('Product not found for SKU: %s', 'sesm'), $sku);
+            $result['error'] = sprintf(__('No SKU provided', 'sesm'), $sku);
+            return $result;
+        }
+        $product_id = wc_get_product_id_by_sku($sku);
+        if ($product_id === 0) {
+            $result['template'] = 'error';
+            $result['sku'] = $sku;
+            if($this->checkSKU($sku)){
+                $result['error'] = __('Could not load the Product. Please update the lookup tables. <br/>(Woocommerce -> Status -> Tools -> Rebuild Lookup Tables)', 'sesm');
+            }else{
+                $result['error'] = sprintf(__('Product not found for SKU: %s', 'sesm'), $sku);
+            }
             return $result;
         } else {
             return wc_get_product($product_id);
         }
+    }
+    /**
+     * Checks if SKU is found in PostMeta. If true, the user has to update the lookup-tables.
+     *
+     * @param int $sku - The SKU
+     * 
+     * @return mixed false if not found, post_id on success.
+     */
+    public function checkSKU($sku){
+        global $wpdb;
+        $sku = (integer) $sku;
+        $prep = $wpdb->prepare( "SELECT post_id FROM $wpdb->postmeta where meta_key ='_sku' and meta_value like '%d'", $sku );
+        $getCol = $wpdb->get_col( $prep );
+        if(isset($getCol[0]) AND !empty($getCol[0])){
+            return $getCol[0];
+        }
+        return false;
     }
 
     /**

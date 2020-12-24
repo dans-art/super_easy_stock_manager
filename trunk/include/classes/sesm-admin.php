@@ -11,13 +11,9 @@ Class Super_Easy_Stock_Manager_Admin extends Super_Easy_Stock_Manager_Helper
 
 
     /**
-     * Add the Actions
+     * Does nothing so far... maybe there will be some Backend functionalities.
      */
     public function __construct()
     {
-        //add_action('init', [$this, 'sesm_load_textdomain']); //load language 
-        //add_action('admin_init', [$this, 'sesm_add_settings_section_init']);
     }
-
-
 }

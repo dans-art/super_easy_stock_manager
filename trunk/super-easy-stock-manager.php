@@ -3,7 +3,7 @@
 /**
  * Plugin Name: Super Easy Stock Manager
  * Description: Stock Management with ease!
- * Version: 0.1
+ * Version: 1.0
  * Author: Dan's Art
  * Author URI: http://dev.dans-art.ch
  * Text Domain: sesm
@@ -18,21 +18,7 @@
 require_once('include/tools/sesm-helper.php');
 require_once('include/classes/sesm.php');
 require_once('include/classes/sesm-ajax.php');
-require_once('include/classes/sesm-admin.php');
+//require_once('include/classes/sesm-admin.php');
 
 
 $sesm = new Super_Easy_Stock_Manager();
-
-//add_action('wp_loaded', 'sesmRun');
-
-/**
- * Runs the Plugin
- */
-/*
-function sesmRun()
-{
-    global $sesm;
-    $sesm -> run();
-    //$sesm->sesm_admin_init();
-}
-*/

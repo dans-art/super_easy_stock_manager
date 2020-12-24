@@ -10,13 +10,8 @@
 
 class Super_Easy_Stock_Manager_Helper
 {
-    protected $version = '0.1';
+    protected $version = '1.0';
     protected $scriptsLoaded = false;
-    //public $admin_notices = array();
-
-    public function __construct()
-    {
-    }
 
     /**
      * Loads the translation of the plugin.
@@ -24,7 +19,7 @@ class Super_Easy_Stock_Manager_Helper
      *
      * @return void
      */
-    public function sesm_load_textdomain()
+    public function sesmLoadTextdomain()
     {
         load_textdomain('sesm', WP_PLUGIN_DIR . '/super-easy-stock-manager/languages/sesm-' . determine_locale() . '.mo');
     }
@@ -64,7 +59,7 @@ class Super_Easy_Stock_Manager_Helper
     public function addActions()
     {
         //load language 
-        add_action('init', [$this, 'sesm_load_textdomain']);
+        add_action('init', [$this, 'sesmLoadTextdomain']);
 
         //register Ajax
         add_action('wp_ajax_sesm-ajax', [$this, 'sesmAjax']);
@@ -72,7 +67,13 @@ class Super_Easy_Stock_Manager_Helper
 
         add_action('template_redirect',  [$this, 'templateRedirect']);
     }
-
+    /**
+     * Redirect page to https://your-site.com/sesm
+     *
+     * @todo Currently not working on all systems. Add Shortcode for workaround!?
+     * 
+     * @return void
+     */
     public function templateRedirect()
     {
         global $wp_query;
